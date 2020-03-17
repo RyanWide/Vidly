@@ -6,56 +6,69 @@ using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
 
+using System.Data.Entity;
+
 namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
-            var movies = GetMovies();
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
 
-        private IEnumerable<Movie> GetMovies()
+        public ActionResult Details(int id)
         {
-            return new List<Movie>
-            {
-                new Movie{Id = 1, Name = "Shrek" },
-                new Movie{Id = 2, Name = "Wall-e" },
-            };
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+            return View(movie);
         }
 
-        // GET: Movies/Random
-        public ActionResult Random()
-        {
-            var movie = new Movie() { Name = "Shrek!" };
-            var customers = new List<Customer> { 
-                new Customer{Name = "Customer 1"}, 
-                new Customer{Name = "Customer 2"}, 
-            };
+        //// GET: Movies/Random
+        //public ActionResult Random()
+        //{
+        //    var movie = new Movie() { Name = "Shrek!" };
+        //    var customers = new List<Customer> { 
+        //        new Customer{Name = "Customer 1"}, 
+        //        new Customer{Name = "Customer 2"}, 
+        //    };
 
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers,
-            };
+        //    var viewModel = new RandomMovieViewModel
+        //    {
+        //        Movie = movie,
+        //        Customers = customers,
+        //    };
 
-            return View(viewModel);
+        //    return View(viewModel);
 
-            //2ways to call views:
-            //return View(movie); //1 where view has same name as action (in this case Random)
+        //    //2ways to call views:
+        //    //return View(movie); //1 where view has same name as action (in this case Random)
 
-            //ViewData["Movie"] = movie; //2 but need to specify the call in view file. but very messy
-            //ViewBag.Movie = movie;
-            //return View();
+        //    //ViewData["Movie"] = movie; //2 but need to specify the call in view file. but very messy
+        //    //ViewBag.Movie = movie;
+        //    //return View();
 
-            //Types of action views:
-            //return Content("hello world");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            //return RedirectToAction("Index", "Home", new {page =1, sortBy = "name}); //get calls to the new part of arg 
-        }
+        //    //Types of action views:
+        //    //return Content("hello world");
+        //    //return HttpNotFound();
+        //    //return new EmptyResult();
+        //    //return RedirectToAction("Index", "Home", new {page =1, sortBy = "name}); //get calls to the new part of arg 
+        //}
 
         
         ////attribute route example:
