@@ -175,15 +175,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003171905212_InitialModel.cs" />
-    <Compile Include="Migrations\202003171905212_InitialModel.Designer.cs">
-      <DependentUpon>202003171905212_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202003171947504_InitialModel.cs" />
+    <Compile Include="Migrations\202003171947504_InitialModel.Designer.cs">
+      <DependentUpon>202003171947504_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003171951227_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\202003171951227_PopulateMembershipType.Designer.cs">
+      <DependentUpon>202003171951227_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003171956286_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\202003171956286_ApplyAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>202003171956286_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -269,8 +278,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003171905212_InitialModel.resx">
-      <DependentUpon>202003171905212_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003171947504_InitialModel.resx">
+      <DependentUpon>202003171947504_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171951227_PopulateMembershipType.resx">
+      <DependentUpon>202003171951227_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171956286_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>202003171956286_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
