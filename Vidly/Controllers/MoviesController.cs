@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -13,8 +14,25 @@ namespace Vidly.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
+            var customers = new List<Customer> { 
+                new Customer{Name = "Customer 1"}, 
+                new Customer{Name = "Customer 2"}, 
+            };
 
-            return View(movie);
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers,
+            };
+
+            return View(viewModel);
+
+            //2ways to call views:
+            //return View(movie); //1 where view has same name as action (in this case Random)
+
+            //ViewData["Movie"] = movie; //2 but need to specify the call in view file. but very messy
+            //ViewBag.Movie = movie;
+            //return View();
 
             //Types of action views:
             //return Content("hello world");
@@ -22,9 +40,10 @@ namespace Vidly.Controllers
             //return new EmptyResult();
             //return RedirectToAction("Index", "Home", new {page =1, sortBy = "name}); //get calls to the new part of arg 
         }
+
         
         //attribute route example:
-        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)")]
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
