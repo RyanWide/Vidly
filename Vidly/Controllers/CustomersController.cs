@@ -51,6 +51,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]//need to include this and add hidden field token statement in view to validate the form so that it's anti-forgery
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
