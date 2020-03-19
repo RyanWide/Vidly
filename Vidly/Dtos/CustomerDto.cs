@@ -19,7 +19,7 @@ namespace Vidly.Dtos
         //[Min18YearsIfAMember]  //error happens due to api calling for regular customer when processing in Min18YearsIfAMember class
         public DateTime? Birthdate { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
-
+        public MembershipTypeDto MembershipType { get; set; }
         public byte MembershipTypeId { get; set; }
     }
 }
