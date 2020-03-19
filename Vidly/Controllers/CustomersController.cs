@@ -9,6 +9,8 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+    //[AllowAnonymous] //will disable global filter for this action only
+    //[Authorize] //will put authorize in this control only
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
