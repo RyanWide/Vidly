@@ -9,6 +9,7 @@ namespace Vidly
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute()); //preventing unauthorized access to all source of website
+            filters.Add(new RequireHttpsAttribute()); //allow only https access, but seem to do this automatically in new version of vs
         }
     }
 }

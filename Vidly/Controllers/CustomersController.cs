@@ -7,6 +7,8 @@ using Vidly.Models;
 using System.Data.Entity;
 using Vidly.ViewModels;
 
+//using System.Runtime.Caching.MemoryCache //need to import the library into project to use it (not included in default project)
+
 namespace Vidly.Controllers
 {
     //[AllowAnonymous] //will disable global filter for this action only
@@ -28,6 +30,14 @@ namespace Vidly.Controllers
         // GET: Customers
         public ActionResult Index()
         {
+            //memory caching example (need to import runtime.caching.memorycache) (basically serverside caching)
+            //if(MemoryCache.Default["Genres"] == null)
+            //{
+            //    MemoryCache.Default["Genres"] = _context.Genres.ToList();
+            //}
+            //var genres = MemoryCache.Default["Genres"] as IEnumerable<Genre>;
+
+
             //no longer using serverside call to data (instead using js call to api)
             //var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             //return View(customers);

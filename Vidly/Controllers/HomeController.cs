@@ -9,6 +9,8 @@ namespace Vidly.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        //[OutputCache(Duration = 50, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam = "*")]//cacheing serverside
+        //[OutputCache(Duration = 0, VaryByParam = "*", NoStore = true)]//disabling cacheing
         public ActionResult Index()
         {
             return View();
